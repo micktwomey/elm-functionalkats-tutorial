@@ -247,7 +247,7 @@ h1 : List Attribute -> List Html -> Html
 
 Html.h1 takes a List of Attribute, and a List of Html and returns Html.
 
-(Someone else can explain it better than me.)
+(Someone else can explain it better than me. Evan explained it to me and I promptly forgot.)
 
 ---
 
@@ -282,3 +282,155 @@ main =
   in
     header
 ```
+
+---
+
+# Exercise: HelloLet.elm
+
+Fill in the let expression in HelloLet.elm
+
+---
+
+# Solution
+
+```haskell
+module HelloLet where
+
+import Html exposing (..)
+
+header : String -> Html
+header title =
+  let
+    fullTitle = "The title: " ++ title
+    htmlTitle = text fullTitle
+  in
+    h1 [] [ htmlTitle ]
+
+main : Html
+main =
+  header "Hello World"
+```
+
+---
+
+# Pipes
+
+Nifty syntax feature every language should have
+
+```haskell
+(height 24 (italic (fromString "Hello World!")))
+```
+
+Becomes
+
+```haskell
+fromString "Hello World!"
+|> italic
+|> height 24
+```
+
+---
+
+# Quick Exercise: HelloPipe.elm
+
+You know what to do, use pipes :)
+
+```haskell
+main = leftAligned (height 24 (bold (fromString "Hello World!")))
+```
+
+---
+
+# Solution
+
+```haskell
+module HelloText where
+
+import Graphics.Element exposing (Element, leftAligned)
+import Text exposing (..)
+
+main : Element
+main =
+  fromString "Hello World!"
+    |> bold
+    |> height 24
+    |> leftAligned
+```
+
+---
+
+# Types and Case
+
+```haskell
+type MyType
+  = Something
+  | Else
+  | Other String
+
+useMyType : MyType -> String
+useMyType myType =
+  case myType of
+    Something ->
+      "Something"
+    Else ->
+      "Else!"
+    Other string ->
+      "Other: " ++ string
+```
+
+^ This is where some of the fun really begins
+^ Case statement works really well with these Types
+^ Tells you when you miss cases (great for refactoring and extending)
+
+---
+
+# Exercise: HelloTypes.elm
+
+Can you complete HelloTypes.elm?
+
+Hints:
+
+1. Start by filling out the type definition
+2. The compiler error should start guiding you to the right case statements
+3. You might need more helper functions
+4. List.map is new, it takes a function and applies it to each item in a list.
+
+---
+
+# Solution
+
+```haskell
+type Greeting
+  = Header String
+  | Ul (List String)
+  | Paragraph String
+  | Numbers (List Int)
+```
+
+---
+
+# Solution Part 2
+
+```haskell
+greeting : Greeting -> Html
+greeting greet =
+  case greet of
+    Header header ->
+      h1 [] [ text header ]
+    Ul strings ->
+      ul [] (List.map stringToLi strings)
+    Paragraph para ->
+      p [] [ text para ]
+    Numbers numbers ->
+      -- Ha! I cheated! I used syntax you haven't seen!
+      ol [] (List.map (\x -> li [] [text (toString x) ]) numbers)
+```
+
+---
+
+# Further Reading
+
+- Elm Architecture Tutorial: https://github.com/evancz/elm-architecture-tutorial/
+- How to Create Tetris in Elm: https://www.youtube.com/watch?v=GMSXYnMH1gg&list=PL7C8fMD-89DKhlerIE3BrYNd0PlhA6Zch (you might want to Google that one :wink:)
+
+These slides: https://github.com/micktwomey/elm-functionalkats-tutorial
