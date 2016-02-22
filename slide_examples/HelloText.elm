@@ -1,13 +1,13 @@
 module HelloText where
 
 import Graphics.Element exposing (Element, leftAligned)
-import Text
+import Text exposing (..)
 
-text : Text.Text
+text : Text
 text =
   Text.fromString "Hello World!"
-    |> Text.bold
-    |> Text.height 24
+    |> bold
+    |> height 24
 
 main : Element
 main = leftAligned text
