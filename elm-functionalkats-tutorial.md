@@ -20,9 +20,16 @@
 
 ---
 
+# Caveats
+
+- Still a very young language
+- Significant syntax changes still happening (though they try to minimize pain)
+
+---
+
 # What I'll be covering
 
-1. Getting start with Elm
+1. Getting started with Elm
 1. Elm basics
 1. Hopefully some Elm less basics :smile:
 
