@@ -27,7 +27,7 @@
 
 ---
 
-# What I'll be covering
+# What I'll be Covering
 
 1. Getting started with Elm
 1. Elm basics
@@ -234,7 +234,7 @@ e.g. for Html.h1: http://package.elm-lang.org/packages/evancz/elm-html/4.0.2/Htm
 
 ---
 
-# Digression 3: there's a REPL
+# Digression 3: There's a REPL
 
 ```
 elm repl
@@ -451,6 +451,12 @@ Shows state of arrow keys.
 
 ---
 
+# Interlude: Signal Visualization
+
+Excellent signal viewer: [http://yang-wei.github.io/elmflux/](http://yang-wei.github.io/elmflux/)
+
+---
+
 # Exercise: ArrowPresses.elm
 
 Render a different triangle for each arrow press.
@@ -472,6 +478,8 @@ What's with those Debug.watch calls?
 ---
 
 # Models and State
+
+We've seen views and signals, the next part is state.
 
 ---
 
@@ -500,7 +508,7 @@ newModel = { Model
   }
 ```
 
-You *can't* mutate a model, only return a new one.
+You can't mutate a model, only return a new one.
 
 ---
 
@@ -543,9 +551,17 @@ update {x, y} player =
 
 ---
 
+# Stuff I Haven't Covered
+
+- Effects and Tasks (how you do HTTP requests)
+- start-app (the canonical architecture pattern codified in a library)
+- WebGL (did I mention Elm has a GL shader compiler tucked away in it?)
+
+---
+
 # Further Reading
 
 - Elm Architecture Tutorial: https://github.com/evancz/elm-architecture-tutorial/
-- How to Create Tetris in Elm: https://www.youtube.com/watch?v=GMSXYnMH1gg&list=PL7C8fMD-89DKhlerIE3BrYNd0PlhA6Zch
-
-These slides: https://github.com/micktwomey/elm-functionalkats-tutorial
+  + My warmup tutorial: https://github.com/micktwomey/elm-tutorial
+- How to Create Tetris in Elm: https://goo.gl/TgQeRy
+- https://github.com/micktwomey/elm-functionalkats-tutorial
