@@ -428,9 +428,117 @@ greeting greet =
 
 ---
 
+# Signals
+
+Go from a static app to a dynamic app
+
+slide_examples/KeyboardSignals.elm:
+
+```haskell
+main : Signal Element
+main =
+  Signal.map show arrows
+```
+
+Shows state of arrow keys.
+
+---
+
+# Exercise: ArrowPresses.elm
+
+Render a different triangle for each arrow press.
+
+See http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Graphics-Collage
+
+---
+
+# Solution
+
+See solutions/ArrowPresses.elm
+
+What's with those Debug.watch calls?
+
+## Bonus: Time Travel Debugging!
+
+[http://localhost:8000/solutions/ArrowPresses.elm?debug](http://localhost:8000/solutions/ArrowPresses.elm?debug)
+
+---
+
+# Models and State
+
+---
+
+# Records
+
+```haskell
+type alias Model =
+  { x : Int
+  , y : Int
+  , colour: Color
+  }
+
+model : Model
+model = { x = 1, y = 2, color = Color.blue }
+```
+
+---
+
+# Updating Records
+
+```haskell
+newModel = { Model
+  | x = 1
+  , y = 2
+  , colour = Color.red
+  }
+```
+
+You *can't* mutate a model, only return a new one.
+
+---
+
+# Mind Melting Bit: foldp
+
+```haskell
+main : Signal Element
+main =
+  Signal.foldp update init Keyboard.arrows
+    |> Signal.map view
+```
+
+---
+
+# Exercise
+
+Can you fill in the ```initPlayer``` and ```update``` functions in exercises/ArrowModel.elm?
+
+---
+
+# Solution
+
+See solutions/ArrowModel.elm
+
+```haskell
+initPlayer : Model
+initPlayer =
+  { x = 0
+  , y = 0
+  , shape = playerShape
+  }
+
+update : { x : Int, y : Int } -> Model -> Model
+update {x, y} player =
+  { player
+  | x = player.x + (x * 10)
+  , y = player.y + (y * 10)
+  }
+```
+
+---
+
 # Further Reading
 
 - Elm Architecture Tutorial: https://github.com/evancz/elm-architecture-tutorial/
-- How to Create Tetris in Elm: https://www.youtube.com/watch?v=GMSXYnMH1gg&list=PL7C8fMD-89DKhlerIE3BrYNd0PlhA6Zch (you might want to Google that one :wink:)
+- How to Create Tetris in Elm: https://www.youtube.com/watch?v=GMSXYnMH1gg&list=PL7C8fMD-89DKhlerIE3BrYNd0PlhA6Zch
 
 These slides: https://github.com/micktwomey/elm-functionalkats-tutorial
