@@ -5,6 +5,8 @@
 ### Michael Twomey
 ### @micktwomey
 
+![](elm logo.png)
+
 ---
 
 # What is Elm?
@@ -565,3 +567,5 @@ update {x, y} player =
   + My warmup tutorial: https://github.com/micktwomey/elm-tutorial
 - How to Create Tetris in Elm: https://goo.gl/TgQeRy
 - https://github.com/micktwomey/elm-functionalkats-tutorial
+
+![inline](elm logo.png)
