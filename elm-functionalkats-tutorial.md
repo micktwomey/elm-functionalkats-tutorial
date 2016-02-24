@@ -121,7 +121,10 @@ main = leftAligned text
 # [fit] Install Plugins
 
 ## [fit] language-elm
+## [fit] linter
 ## [fit] linter-elm-make
+
+## [fit] settings -> linter-elm-make -> path -> /usr/local/bin/elm-make (or wherever it is)
 
 ---
 
@@ -132,6 +135,8 @@ git clone https://github.com/micktwomey/elm-functionalkats-tutorial.git
 cd elm-functionalkats-tutorial
 elm package install
 ```
+
+**Note:** Always run ```elm make``` from elm-functionalkats-tutorial, everything has to be relative to elm-package.json
 
 ---
 
@@ -182,17 +187,27 @@ This is a MAJOR change.
 
 ---
 
-# Exercise 1: Hello World Yourself!
+## Exercise 1: Hello World Yourself!
 
-1. Fire up elm's reactor ```elm reactor```
+1. Fire up elm's reactor ```elm reactor``` in elm-functionalkats-tutorial/
 
 1. Go to http://localhost:8000/
 
-1. Open exercises/HelloWorldYourself.elm
+1. Open exercises/HelloWorldYourself.elm in your editor (easiest is usually to open the elm-functionalkats-tutorial in your editor and select the file).
 
 1. Try running in the reactor (http://localhost:8000/exercises/HelloWorldYourself.elm) or compile with ```elm make exercises/HelloWorldYourself.elm```
 
 1. Let it explode and see what fun errors you get :)
+
+---
+
+# Errors You Might See
+
+- Editor complains about missing `elm-make`. Check plugin settings and point to full path if needed.
+
+- `... elm-make: thread blocked indefinitely in an MVar operation` -> https://github.com/elm-lang/elm-make/issues/33
+
+- ```elm make``` complains about missing Html package. Check that you are running from elm-functionalkats-tutorial and ```elm package install``` works.
 
 ---
 
